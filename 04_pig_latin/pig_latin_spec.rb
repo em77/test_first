@@ -58,11 +58,18 @@ describe "#translate" do
   it "counts 'qu' as a consonant even when it's preceded by a consonant" do
     s = translate("square")
     s.should == "aresquay"
+    a = translate("quick")
+    a.should == "ickquay"
   end
 
   it "translates many words" do
     s = translate("the quick brown fox")
     s.should == "ethay ickquay ownbray oxfay"
+  end
+
+  it "translates words and retains their capitalization" do
+    s = translate("The Quick Brown Fox")
+    s.should == "Ethay Ickquay Ownbray Oxfay"
   end
 
   # Test-driving bonus:
